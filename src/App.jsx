@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import ItemInput from "./components/ItemInput";
+import Items from "./components/Items";
+import Total from "./components/Total";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [items, setItems] = useState([
+        {
+            id: Math.floor(Math.random() * 10000),
+            name: "Groceries",
+            price: "200",
+        },
+        { id: Math.floor(Math.random() * 10000), name: "Paint", price: "500" },
+        { id: Math.floor(Math.random() * 10000), name: "Car", price: "900" },
+        {
+            id: Math.floor(Math.random() * 10000),
+            name: "Gardening",
+            price: "300",
+        },
+    ]);
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(0);
+    const [isEditing, setIsEditing] = useState(false);
+    const [edit, setEdit] = useState({})
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const editItem = (id) => {
+        setIsEditing(true);
+
+        const itemToBeEdited = items.find((item) => item.id == id)
+        setName(itemToBeEdited.name);
+        setPrice(itemToBeEdited.price);
+        setEdit({
+            itemToBeEdited: itemToBeEdited,
+            index: items.findIndex((item) => item.id == id),
+        })
+    };
+
+    const updateItem = () => {
+        let newItems = [...items];
+        newItems[edit.index] = {
+            ...edit.itemToBeEdited,
+            name: name,
+            price: price,
+        };
+        setItems(newItems)
+        setName("");
+        setPrice("");
+        setIsEditing(false);
+    };
+
+    return (
+        <>
+            <ItemInput
+                items={items}
+                setItems={setItems}
+                name={name}
+                setName={setName}
+                price={price}
+                setPrice={setPrice}
+                updateItem={updateItem}
+                isEditing={isEditing}
+            />
+            <Items items={items} setItems={setItems} editItem={editItem} />
+        </>
+    );
 }
 
-export default App
+export default App;

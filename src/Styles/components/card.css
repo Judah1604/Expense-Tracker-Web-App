@@ -23,10 +23,12 @@
   font-size: 1em;
 }
 .input-card .name-input {
-  width: 60%;
+  width: 70%;
 }
-.input-card .price-input {
+.input-card .price {
   width: 20%;
+  display: flex;
+  align-items: center;
 }
 .input-card .price-input::-webkit-outer-spin-button, .input-card .price-input::-webkit-inner-spin-button {
   -webkit-appearance: none;

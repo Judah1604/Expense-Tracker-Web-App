@@ -27,12 +27,16 @@ $lightblue: #212f3d;
     }
 
     .name-input {
-        width: 60%;
+        width: 70%;
+    }
+
+    .price {
+        width: 20%;
+        display: flex;
+        align-items: center;
     }
 
     .price-input {
-        width: 20%;
-
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;

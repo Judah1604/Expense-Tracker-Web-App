@@ -1,8 +1,13 @@
-# React + Vite
+# Expense Tracker Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an expense tracker web app with CRUD(Create, Read, Update, Delete) capabilities.
 
-Currently, two official plugins are available:
+## Screenshot
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![](./screenshot.PNG)
+
+## Tools
+Built with:
+
+- React
+- SASS
